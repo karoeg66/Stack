@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+
 public class Stack {
     Nodo top;
     int tamanio;
@@ -10,6 +12,9 @@ public class Stack {
     }
 
     public int pop() {
+        if (tamanio == 0) {
+            throw new EmptyStackException();
+        }
         int valor = top.valor;
         top.siguiente = top;
         tamanio--;
@@ -17,6 +22,9 @@ public class Stack {
     }
 
     public int peek() {
+        if (tamanio == 0) {
+            throw new  EmptyStackException();
+        }
         return top.valor;
     }
 
@@ -29,5 +37,12 @@ public class Stack {
             return true;
         }
         return false;
+    }
+
+    public void printStack(){
+        while(top.siguiente != null){
+            System.out.println(top.valor);
+            top = top.siguiente;
+        }
     }
 }

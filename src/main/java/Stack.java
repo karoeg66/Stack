@@ -16,7 +16,7 @@ public class Stack {
             throw new EmptyStackException();
         }
         int valor = top.valor;
-        top.siguiente = top;
+        top = top.siguiente;
         tamanio--;
         return valor;
     }
@@ -40,9 +40,10 @@ public class Stack {
     }
 
     public void printStack(){
-        while(top.siguiente != null){
-            System.out.println(top.valor);
-            top = top.siguiente;
+        Nodo puntero = top;
+        while(puntero != null){
+            System.out.println(puntero.valor);
+            puntero = puntero.siguiente;
         }
     }
 }
